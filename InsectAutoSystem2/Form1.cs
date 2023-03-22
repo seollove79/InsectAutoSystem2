@@ -18,7 +18,6 @@ namespace InsectAutoSystem2
         private FilterInfoCollection VideoCaptureDevices;
         private VideoCaptureDevice FinalVideo;
         private VideoCaptureDeviceForm captureDevice = new VideoCaptureDeviceForm();
-        private Bitmap bitmap;
 
         public Form1()
         {
@@ -37,13 +36,11 @@ namespace InsectAutoSystem2
 
             FinalVideo = new VideoCaptureDevice(VideoCaptureDevices[comboBox1.SelectedIndex].MonikerString);
             FinalVideo.NewFrame += new NewFrameEventHandler(FinalVideo_NewFrame);
-
-
         }
 
         private void FinalVideo_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
-            if(pictureBox1.Image != null)
+            if (pictureBox1.Image != null)
             {
                 pictureBox1.Image.Dispose();
             }
