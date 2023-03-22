@@ -29,13 +29,22 @@ namespace InsectAutoSystem2
             VideoCaptureDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             foreach (FilterInfo device in VideoCaptureDevices)
             {
-                comboBox1.Items.Add(device);
+                comboBox1.Items.Add(device.Name);
             }
             captureDevice = new VideoCaptureDeviceForm();
             comboBox1.SelectedIndex = 2;
 
             FinalVideo = new VideoCaptureDevice(VideoCaptureDevices[comboBox1.SelectedIndex].MonikerString);
             FinalVideo.NewFrame += new NewFrameEventHandler(FinalVideo_NewFrame);
+
+            /*
+            // 해상도 확인 코드
+            for (int i=0; i< FinalVideo.VideoCapabilities.Length; i++)
+            {
+                Console.WriteLine(FinalVideo.VideoCapabilities[i].FrameSize.ToString());
+            }*/
+
+            
         }
 
         private void FinalVideo_NewFrame(object sender, NewFrameEventArgs eventArgs)
@@ -49,7 +58,7 @@ namespace InsectAutoSystem2
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            FinalVideo.VideoResolution = FinalVideo.VideoCapabilities[8];
+            FinalVideo.VideoResolution = FinalVideo.VideoCapabilities[4];
             FinalVideo.Start();
         }
 
@@ -58,8 +67,6 @@ namespace InsectAutoSystem2
             if (FinalVideo.IsRunning == true)
             {
                 FinalVideo.Stop();
-                /*                pictureBox.Image = null;
-                                pictureBox.Invalidate();*/
                 pictureBox1.Image = null;
                 pictureBox1.Invalidate();
             }
