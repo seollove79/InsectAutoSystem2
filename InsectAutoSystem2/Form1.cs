@@ -26,16 +26,32 @@ namespace InsectAutoSystem2
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            int cameraIndex=-1;
+            int i = 0;
             VideoCaptureDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+
             foreach (FilterInfo device in VideoCaptureDevices)
             {
-                comboBox1.Items.Add(device.Name);
+                if(device.Name == "See3CAM_CU135")
+                {
+                    cameraIndex = i;
+                }
+                i++;
             }
-            captureDevice = new VideoCaptureDeviceForm();
-            comboBox1.SelectedIndex = 2;
 
-            FinalVideo = new VideoCaptureDevice(VideoCaptureDevices[comboBox1.SelectedIndex].MonikerString);
-            FinalVideo.NewFrame += new NewFrameEventHandler(FinalVideo_NewFrame);
+            if (cameraIndex != -1)
+            {
+                captureDevice = new VideoCaptureDeviceForm();
+                FinalVideo = new VideoCaptureDevice(VideoCaptureDevices[cameraIndex].MonikerString);
+                FinalVideo.NewFrame += new NewFrameEventHandler(FinalVideo_NewFrame);
+
+                FinalVideo.VideoResolution = FinalVideo.VideoCapabilities[4];
+                FinalVideo.Start();
+            }
+            else
+            {
+                MessageBox.Show("카메라가 없습니다.\n카메라를 연결을 확인해 주세요.");
+            }
 
             /*
             // 해상도 확인 코드
@@ -43,8 +59,6 @@ namespace InsectAutoSystem2
             {
                 Console.WriteLine(FinalVideo.VideoCapabilities[i].FrameSize.ToString());
             }*/
-
-            
         }
 
         private void FinalVideo_NewFrame(object sender, NewFrameEventArgs eventArgs)
@@ -82,7 +96,7 @@ namespace InsectAutoSystem2
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (FinalVideo.IsRunning == true)
+            if (FinalVideo != null && FinalVideo.IsRunning == true)
             {
                 FinalVideo.Stop();
                 Application.Exit();
