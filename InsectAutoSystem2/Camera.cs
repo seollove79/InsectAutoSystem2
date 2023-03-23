@@ -117,5 +117,13 @@ namespace InsectAutoSystem2
             return encoderParams;
         }
 
+        public void clear()
+        {
+            if (FinalVideo != null && FinalVideo.IsRunning == true)
+            {
+                FinalVideo.Stop();
+            }
+        }
+
     }
 }

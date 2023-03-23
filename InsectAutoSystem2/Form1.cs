@@ -45,17 +45,10 @@ namespace InsectAutoSystem2
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-/*            if (FinalVideo != null && FinalVideo.IsRunning == true)
-            {
-                FinalVideo.Stop();
-                pictureBox1.Image = null;
-                pictureBox1.Invalidate();
-                Application.Exit();
-            }
-            else
-            {
-                Application.Exit();
-            }*/
+            camera.clear();
+            pictureBox1.Image = null;
+            pictureBox1.Invalidate();
+            Application.Exit();
         }
     }
 }
