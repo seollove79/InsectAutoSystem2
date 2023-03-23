@@ -8,16 +8,21 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace InsectAutoSystem2
 {
     delegate void ShowVideoFrameDelegate(Bitmap videoFrame);
+    delegate void ShowMessageDelegate(String Str);
 
     public partial class Form1 : Form
     {
         Camera camera;
+        private static Scale scale;
+        Thread scaleThread = new Thread(readScale);
+
         public Form1()
         {
             InitializeComponent();
@@ -26,7 +31,16 @@ namespace InsectAutoSystem2
         private void Form1_Load(object sender, EventArgs e)
         {
             ShowVideoFrameDelegate del = showVideoFrame;
-            camera = new Camera(del);
+            ShowMessageDelegate del1 = showMessage;
+            camera = new Camera(del, del1);
+            scale = new Scale();
+
+            scaleThread.Start();
+        }
+
+        private static void readScale()
+        {
+            scale.setSerialPort();
         }
 
         private void btnSnapshot_Click(object sender, EventArgs e)
@@ -49,6 +63,11 @@ namespace InsectAutoSystem2
             pictureBox1.Image = null;
             pictureBox1.Invalidate();
             Application.Exit();
+        }
+
+        private void showMessage(string str)
+        {
+            MessageBox.Show(str);
         }
     }
 }

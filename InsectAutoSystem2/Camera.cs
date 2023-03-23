@@ -18,10 +18,12 @@ namespace InsectAutoSystem2
         private VideoCaptureDeviceForm captureDevice = new VideoCaptureDeviceForm();
         private Bitmap videoFrame;
         private ShowVideoFrameDelegate showVideoFrameDelegate;
+        private ShowMessageDelegate showMessageDelegate;
 
-        public Camera(ShowVideoFrameDelegate del)
+        public Camera(ShowVideoFrameDelegate del, ShowMessageDelegate del1)
         {
             showVideoFrameDelegate = del;
+            showMessageDelegate = del1;
             initCamera();
         }
 
@@ -51,7 +53,7 @@ namespace InsectAutoSystem2
             }
             else
             {
-                //MessageBox.Show("카메라가 없습니다.\n카메라를 연결을 확인해 주세요.");
+                showMessageDelegate("카메라가 없습니다.\n카메라를 연결을 확인해 주세요.");
             }
         }
 
