@@ -34,9 +34,6 @@ namespace InsectAutoSystem2
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSnapshot = new System.Windows.Forms.Button();
-            this.btnStop = new System.Windows.Forms.Button();
-            this.btnStart = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -88,9 +85,6 @@ namespace InsectAutoSystem2
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnSnapshot);
-            this.groupBox1.Controls.Add(this.btnStop);
-            this.groupBox1.Controls.Add(this.btnStart);
-            this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
@@ -108,34 +102,6 @@ namespace InsectAutoSystem2
             this.btnSnapshot.Text = "Snapshot";
             this.btnSnapshot.UseVisualStyleBackColor = true;
             this.btnSnapshot.Click += new System.EventHandler(this.btnSnapshot_Click);
-            // 
-            // btnStop
-            // 
-            this.btnStop.Location = new System.Drawing.Point(89, 46);
-            this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(75, 23);
-            this.btnStop.TabIndex = 2;
-            this.btnStop.Text = "Stop";
-            this.btnStop.UseVisualStyleBackColor = true;
-            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
-            // 
-            // btnStart
-            // 
-            this.btnStart.Location = new System.Drawing.Point(7, 47);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(75, 23);
-            this.btnStart.TabIndex = 1;
-            this.btnStart.Text = "Start";
-            this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 20);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(311, 20);
-            this.comboBox1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -162,9 +128,6 @@ namespace InsectAutoSystem2
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnSnapshot;
-        private System.Windows.Forms.Button btnStop;
-        private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
