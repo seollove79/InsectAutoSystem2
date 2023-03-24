@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -19,9 +20,10 @@ namespace InsectAutoSystem2
 
     public partial class Form1 : Form
     {
-        Camera camera;
+        private Camera camera;
         private static Scale scale;
         Thread scaleThread = new Thread(readScale);
+        private bool scaleConnectCheck = false;
 
         public Form1()
         {
@@ -33,9 +35,12 @@ namespace InsectAutoSystem2
             ShowVideoFrameDelegate del = showVideoFrame;
             ShowMessageDelegate del1 = showMessage;
             camera = new Camera(del, del1);
-            scale = new Scale();
+            setScaleSerialPort();
+        }
 
-            scaleThread.Start();
+        private void setScaleSerialPort()
+        {
+            cbScalePort.DataSource = SerialPort.GetPortNames();
         }
 
         private static void readScale()
@@ -67,7 +72,21 @@ namespace InsectAutoSystem2
 
         private void showMessage(string str)
         {
-            MessageBox.Show(str);
+            this.Invoke(new Action(delegate () { 
+                tbLog.Text += str + "\n";
+                if (str == "저울이 연결되었습니다.\r\n")
+                {
+                    btnConnectScale.Enabled = false;
+                    scaleConnectCheck = true;
+                }
+            }));
+        }
+
+        private void btnConnectScale_Click(object sender, EventArgs e)
+        {
+            ShowMessageDelegate del = showMessage;
+            scale = new Scale(cbScalePort.Text, del);
+            scaleThread.Start();
         }
     }
 }

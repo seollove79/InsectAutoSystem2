@@ -53,7 +53,7 @@ namespace InsectAutoSystem2
             }
             else
             {
-                showMessageDelegate("카메라가 없습니다.\n카메라를 연결을 확인해 주세요.");
+                showMessageDelegate("카메라가 없습니다.\r\n카메라를 연결을 확인해 주세요.\r\n");
             }
         }
 
