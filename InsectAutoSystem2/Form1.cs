@@ -21,29 +21,42 @@ namespace InsectAutoSystem2
     public partial class Form1 : Form
     {
         private Camera camera;
-        private static Scale scale;
-        Thread scaleThread = new Thread(readScale);
-        private bool scaleConnectCheck = false;
+        private Scale scale;
+        private Sensor sensor;
+        Thread scaleThread;
+        Thread getWeightThread;
+        Thread readSonsorThread;
+        private bool scaleConnectCheck;
+        private bool sensorConnectCheck;
+        private float weight;
 
         public Form1()
         {
             InitializeComponent();
-        }
+            readSonsorThread = new Thread(readSensor);
+            getWeightThread = new Thread(refreshWeight);
+            scaleThread = new Thread(readScale);
+            scaleConnectCheck = false;
+            sensorConnectCheck = false;
+            weight = 0;
+    }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             ShowVideoFrameDelegate del = showVideoFrame;
             ShowMessageDelegate del1 = showMessage;
             camera = new Camera(del, del1);
-            setScaleSerialPort();
+            setSerialPort();
         }
 
-        private void setScaleSerialPort()
+        private void setSerialPort()
         {
             cbScalePort.DataSource = SerialPort.GetPortNames();
+            cbSensorPort.DataSource = SerialPort.GetPortNames();
+            cbControlPort.DataSource = SerialPort.GetPortNames();
         }
 
-        private static void readScale()
+        private void readScale()
         {
             scale.setSerialPort();
         }
@@ -76,8 +89,15 @@ namespace InsectAutoSystem2
                 tbLog.Text += str + "\n";
                 if (str == "저울이 연결되었습니다.\r\n")
                 {
+                    cbScalePort.Enabled = false;
                     btnConnectScale.Enabled = false;
                     scaleConnectCheck = true;
+                }
+                if (str == "센서가 연결되었습니다.\r\n")
+                {
+                    cbSensorPort.Enabled = false;
+                    btnConnectSensor.Enabled = false;
+                    sensorConnectCheck = true;
                 }
             }));
         }
@@ -87,6 +107,47 @@ namespace InsectAutoSystem2
             ShowMessageDelegate del = showMessage;
             scale = new Scale(cbScalePort.Text, del);
             scaleThread.Start();
+            getWeightThread.Start();
+        }
+
+        private void btnConnectSensor_Click(object sender, EventArgs e)
+        {
+            ShowMessageDelegate del = showMessage;
+            sensor = new Sensor(cbSensorPort.Text,del);
+            readSonsorThread.Start();
+        }
+
+        private void refreshWeight()
+        {
+            while(true) {
+                weight = scale.getWeight();
+                Console.WriteLine(weight);
+                Thread.Sleep(100);
+            }
+        }
+
+        private void readSensor()
+        {
+            double[] sensorValue = new double[4];
+            for(int i=1; i<=120; i++)
+            {
+                int[] values = sensor.read();
+                sensorValue[0] = sensorValue[0] + (values[0] / 100.0 - 55.0); //온도저장
+                sensorValue[1] = sensorValue[1] + (values[3] / 100.0); //습도저장
+                sensorValue[2] = sensorValue[2] + values[7]; //이산화탄소
+                sensorValue[3] = sensorValue[3] + values[8]; //암모니아
+
+                this.Invoke(new Action(delegate ()
+                {
+                    tbTemperature.Text = Math.Round((sensorValue[0] / i),2).ToString();
+                    tbHumidity.Text = Math.Round((sensorValue[1] / i), 2).ToString();
+                    tbCO2.Text = Math.Round((sensorValue[2] / i), 2).ToString();
+                    tbNH3.Text = Math.Round((sensorValue[3] / i), 2).ToString();
+                }));
+
+                Thread.Sleep(1000);
+            }
+
         }
     }
 }

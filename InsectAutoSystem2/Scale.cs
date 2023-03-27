@@ -83,7 +83,7 @@ serialPort.Open();
             string str = serialPort.ReadLine();
             str = str.Replace(" ", string.Empty);
             weight = float.Parse(str);
-            Console.WriteLine(weight);
+            //Console.WriteLine(weight);
         }
 
         public float getWeight()

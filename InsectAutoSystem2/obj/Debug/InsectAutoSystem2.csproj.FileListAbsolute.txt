@@ -21,3 +21,5 @@ D:\devwork\InsectAutoSystem2\InsectAutoSystem2\bin\Debug\AForge.Video.DirectShow
 D:\devwork\InsectAutoSystem2\InsectAutoSystem2\obj\Debug\InsectAutoSystem2.csproj.CopyComplete
 D:\devwork\InsectAutoSystem2\InsectAutoSystem2\obj\Debug\InsectAutoSystem2.exe
 D:\devwork\InsectAutoSystem2\InsectAutoSystem2\obj\Debug\InsectAutoSystem2.pdb
+D:\devwork\InsectAutoSystem2\InsectAutoSystem2\bin\Debug\EasyModbus.dll
+D:\devwork\InsectAutoSystem2\InsectAutoSystem2\bin\Debug\EasyModbus.xml
