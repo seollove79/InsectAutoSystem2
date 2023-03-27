@@ -32,25 +32,7 @@ namespace InsectAutoSystem2
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnConnectSensor = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnConnectScale = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cbScalePort = new System.Windows.Forms.ComboBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.cbSensorPort = new System.Windows.Forms.ComboBox();
-            this.cbControlPort = new System.Windows.Forms.ComboBox();
-            this.tbLog = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSnapshot = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -64,14 +46,37 @@ namespace InsectAutoSystem2
             this.tbHumidity = new System.Windows.Forms.TextBox();
             this.tbCO2 = new System.Windows.Forms.TextBox();
             this.tbNH3 = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnConnectSensor = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnConnectScale = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbScalePort = new System.Windows.Forms.ComboBox();
+            this.btnConnectController = new System.Windows.Forms.Button();
+            this.cbSensorPort = new System.Windows.Forms.ComboBox();
+            this.cbControlPort = new System.Windows.Forms.ComboBox();
+            this.tbLog = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnSnapshot = new System.Windows.Forms.Button();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.btnStop = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.tbBoxCode = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
-            this.tableLayoutPanel6.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -103,11 +108,11 @@ namespace InsectAutoSystem2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.groupBox2, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.groupBox1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tbLog, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel5, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.groupBox4, 0, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(1191, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -120,19 +125,6 @@ namespace InsectAutoSystem2
             this.tableLayoutPanel2.Size = new System.Drawing.Size(390, 855);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 3;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 235);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(372, 139);
-            this.tableLayoutPanel4.TabIndex = 0;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.tableLayoutPanel6);
@@ -143,6 +135,161 @@ namespace InsectAutoSystem2
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "환경정보";
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 6;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel6.Controls.Add(this.label4, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.label5, 2, 0);
+            this.tableLayoutPanel6.Controls.Add(this.label6, 3, 0);
+            this.tableLayoutPanel6.Controls.Add(this.label7, 5, 0);
+            this.tableLayoutPanel6.Controls.Add(this.label8, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.label9, 2, 1);
+            this.tableLayoutPanel6.Controls.Add(this.label10, 3, 1);
+            this.tableLayoutPanel6.Controls.Add(this.label11, 5, 1);
+            this.tableLayoutPanel6.Controls.Add(this.tbTemperature, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.tbHumidity, 4, 0);
+            this.tableLayoutPanel6.Controls.Add(this.tbCO2, 1, 1);
+            this.tableLayoutPanel6.Controls.Add(this.tbNH3, 4, 1);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 17);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 3;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(378, 168);
+            this.tableLayoutPanel6.TabIndex = 0;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label4.Location = new System.Drawing.Point(30, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 25);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "온도";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label5.Location = new System.Drawing.Point(127, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(17, 25);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "℃";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label6.Location = new System.Drawing.Point(216, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(29, 25);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "습도";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label7.Location = new System.Drawing.Point(313, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(15, 25);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "%";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label8.Location = new System.Drawing.Point(30, 25);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(29, 25);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "CO2";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label9.Location = new System.Drawing.Point(127, 25);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(30, 25);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "ppm";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label10.Location = new System.Drawing.Point(217, 25);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(28, 25);
+            this.label10.TabIndex = 6;
+            this.label10.Text = "NH3";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label11.Location = new System.Drawing.Point(313, 25);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(30, 25);
+            this.label11.TabIndex = 7;
+            this.label11.Text = "ppm";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tbTemperature
+            // 
+            this.tbTemperature.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbTemperature.Location = new System.Drawing.Point(65, 3);
+            this.tbTemperature.Name = "tbTemperature";
+            this.tbTemperature.ReadOnly = true;
+            this.tbTemperature.Size = new System.Drawing.Size(56, 21);
+            this.tbTemperature.TabIndex = 8;
+            // 
+            // tbHumidity
+            // 
+            this.tbHumidity.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbHumidity.Location = new System.Drawing.Point(251, 3);
+            this.tbHumidity.Name = "tbHumidity";
+            this.tbHumidity.ReadOnly = true;
+            this.tbHumidity.Size = new System.Drawing.Size(56, 21);
+            this.tbHumidity.TabIndex = 9;
+            // 
+            // tbCO2
+            // 
+            this.tbCO2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbCO2.Location = new System.Drawing.Point(65, 28);
+            this.tbCO2.Name = "tbCO2";
+            this.tbCO2.ReadOnly = true;
+            this.tbCO2.Size = new System.Drawing.Size(56, 21);
+            this.tbCO2.TabIndex = 10;
+            // 
+            // tbNH3
+            // 
+            this.tbNH3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbNH3.Location = new System.Drawing.Point(251, 28);
+            this.tbNH3.Name = "tbNH3";
+            this.tbNH3.ReadOnly = true;
+            this.tbNH3.Size = new System.Drawing.Size(56, 21);
+            this.tbNH3.TabIndex = 11;
             // 
             // groupBox1
             // 
@@ -167,7 +314,7 @@ namespace InsectAutoSystem2
             this.tableLayoutPanel3.Controls.Add(this.btnConnectScale, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.cbScalePort, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.button4, 2, 2);
+            this.tableLayoutPanel3.Controls.Add(this.btnConnectController, 2, 2);
             this.tableLayoutPanel3.Controls.Add(this.cbSensorPort, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.cbControlPort, 1, 2);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -235,24 +382,27 @@ namespace InsectAutoSystem2
             // cbScalePort
             // 
             this.cbScalePort.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbScalePort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbScalePort.FormattingEnabled = true;
             this.cbScalePort.Location = new System.Drawing.Point(76, 3);
             this.cbScalePort.Name = "cbScalePort";
             this.cbScalePort.Size = new System.Drawing.Size(200, 20);
             this.cbScalePort.TabIndex = 0;
             // 
-            // button4
+            // btnConnectController
             // 
-            this.button4.Location = new System.Drawing.Point(282, 53);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "연결";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnConnectController.Location = new System.Drawing.Point(282, 53);
+            this.btnConnectController.Name = "btnConnectController";
+            this.btnConnectController.Size = new System.Drawing.Size(75, 23);
+            this.btnConnectController.TabIndex = 8;
+            this.btnConnectController.Text = "연결";
+            this.btnConnectController.UseVisualStyleBackColor = true;
+            this.btnConnectController.Click += new System.EventHandler(this.btnConnectController_Click);
             // 
             // cbSensorPort
             // 
             this.cbSensorPort.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbSensorPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSensorPort.FormattingEnabled = true;
             this.cbSensorPort.Location = new System.Drawing.Point(76, 28);
             this.cbSensorPort.Name = "cbSensorPort";
@@ -262,6 +412,7 @@ namespace InsectAutoSystem2
             // cbControlPort
             // 
             this.cbControlPort.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbControlPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbControlPort.FormattingEnabled = true;
             this.cbControlPort.Location = new System.Drawing.Point(76, 53);
             this.cbControlPort.Name = "cbControlPort";
@@ -285,8 +436,8 @@ namespace InsectAutoSystem2
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 79F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 105F));
             this.tableLayoutPanel5.Controls.Add(this.btnSnapshot, 3, 0);
-            this.tableLayoutPanel5.Controls.Add(this.button1, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.button2, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.btnStart, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.btnStop, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.button3, 2, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 158);
@@ -307,25 +458,27 @@ namespace InsectAutoSystem2
             this.btnSnapshot.UseVisualStyleBackColor = true;
             this.btnSnapshot.Click += new System.EventHandler(this.btnSnapshot_Click);
             // 
-            // button1
+            // btnStart
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 65);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "동작시작";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnStart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnStart.Location = new System.Drawing.Point(3, 3);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(94, 65);
+            this.btnStart.TabIndex = 4;
+            this.btnStart.Text = "동작시작";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
-            // button2
+            // btnStop
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Location = new System.Drawing.Point(103, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 65);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "초기화";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnStop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnStop.Location = new System.Drawing.Point(103, 3);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(94, 65);
+            this.btnStop.TabIndex = 5;
+            this.btnStop.Text = "동작정지";
+            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // button3
             // 
@@ -337,160 +490,51 @@ namespace InsectAutoSystem2
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel6
+            // groupBox4
             // 
-            this.tableLayoutPanel6.ColumnCount = 6;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel6.Controls.Add(this.label4, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.label5, 2, 0);
-            this.tableLayoutPanel6.Controls.Add(this.label6, 3, 0);
-            this.tableLayoutPanel6.Controls.Add(this.label7, 5, 0);
-            this.tableLayoutPanel6.Controls.Add(this.label8, 0, 1);
-            this.tableLayoutPanel6.Controls.Add(this.label9, 2, 1);
-            this.tableLayoutPanel6.Controls.Add(this.label10, 3, 1);
-            this.tableLayoutPanel6.Controls.Add(this.label11, 5, 1);
-            this.tableLayoutPanel6.Controls.Add(this.tbTemperature, 1, 0);
-            this.tableLayoutPanel6.Controls.Add(this.tbHumidity, 4, 0);
-            this.tableLayoutPanel6.Controls.Add(this.tbCO2, 1, 1);
-            this.tableLayoutPanel6.Controls.Add(this.tbNH3, 4, 1);
-            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 17);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 3;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(378, 168);
-            this.tableLayoutPanel6.TabIndex = 0;
+            this.groupBox4.Controls.Add(this.tableLayoutPanel4);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox4.Location = new System.Drawing.Point(3, 235);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(384, 188);
+            this.groupBox4.TabIndex = 10;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "사육상자 정보";
             // 
-            // label4
+            // tableLayoutPanel4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label4.Location = new System.Drawing.Point(31, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 25);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "온도";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel4.Controls.Add(this.label12, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.tbBoxCode, 1, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 17);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(378, 168);
+            this.tableLayoutPanel4.TabIndex = 0;
             // 
-            // label5
+            // label12
             // 
-            this.label5.AutoSize = true;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label5.Location = new System.Drawing.Point(129, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(17, 25);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "℃";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label12.AutoSize = true;
+            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label12.Location = new System.Drawing.Point(3, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 25);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "상자번호";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label6
+            // tbBoxCode
             // 
-            this.label6.AutoSize = true;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label6.Location = new System.Drawing.Point(220, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(29, 25);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "습도";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label7.Location = new System.Drawing.Point(318, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(15, 25);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "%";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label8.Location = new System.Drawing.Point(31, 25);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(29, 25);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "CO2";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label9.Location = new System.Drawing.Point(129, 25);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(30, 25);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "ppm";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label10.Location = new System.Drawing.Point(221, 25);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(28, 25);
-            this.label10.TabIndex = 6;
-            this.label10.Text = "NH3";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label11.Location = new System.Drawing.Point(318, 25);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(30, 25);
-            this.label11.TabIndex = 7;
-            this.label11.Text = "ppm";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tbTemperature
-            // 
-            this.tbTemperature.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbTemperature.Location = new System.Drawing.Point(66, 3);
-            this.tbTemperature.Name = "tbTemperature";
-            this.tbTemperature.ReadOnly = true;
-            this.tbTemperature.Size = new System.Drawing.Size(57, 21);
-            this.tbTemperature.TabIndex = 8;
-            // 
-            // tbHumidity
-            // 
-            this.tbHumidity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbHumidity.Location = new System.Drawing.Point(255, 3);
-            this.tbHumidity.Name = "tbHumidity";
-            this.tbHumidity.ReadOnly = true;
-            this.tbHumidity.Size = new System.Drawing.Size(57, 21);
-            this.tbHumidity.TabIndex = 9;
-            // 
-            // tbCO2
-            // 
-            this.tbCO2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbCO2.Location = new System.Drawing.Point(66, 28);
-            this.tbCO2.Name = "tbCO2";
-            this.tbCO2.ReadOnly = true;
-            this.tbCO2.Size = new System.Drawing.Size(57, 21);
-            this.tbCO2.TabIndex = 10;
-            // 
-            // tbNH3
-            // 
-            this.tbNH3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbNH3.Location = new System.Drawing.Point(255, 28);
-            this.tbNH3.Name = "tbNH3";
-            this.tbNH3.ReadOnly = true;
-            this.tbNH3.Size = new System.Drawing.Size(57, 21);
-            this.tbNH3.TabIndex = 11;
+            this.tbBoxCode.Location = new System.Drawing.Point(62, 3);
+            this.tbBoxCode.Name = "tbBoxCode";
+            this.tbBoxCode.ReadOnly = true;
+            this.tbBoxCode.Size = new System.Drawing.Size(313, 21);
+            this.tbBoxCode.TabIndex = 1;
             // 
             // Form1
             // 
@@ -498,21 +542,25 @@ namespace InsectAutoSystem2
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1584, 861);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Form1";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel6.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel6.ResumeLayout(false);
-            this.tableLayoutPanel6.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -526,10 +574,9 @@ namespace InsectAutoSystem2
         private System.Windows.Forms.Button btnSnapshot;
         private System.Windows.Forms.TextBox tbLog;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Button btnConnectScale;
         private System.Windows.Forms.ComboBox cbScalePort;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
@@ -538,7 +585,7 @@ namespace InsectAutoSystem2
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnConnectController;
         private System.Windows.Forms.ComboBox cbSensorPort;
         private System.Windows.Forms.ComboBox cbControlPort;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
@@ -554,6 +601,10 @@ namespace InsectAutoSystem2
         private System.Windows.Forms.TextBox tbHumidity;
         private System.Windows.Forms.TextBox tbCO2;
         private System.Windows.Forms.TextBox tbNH3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox tbBoxCode;
     }
 }
 

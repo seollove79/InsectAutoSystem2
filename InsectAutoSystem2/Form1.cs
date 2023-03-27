@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace InsectAutoSystem2
 {
@@ -23,6 +24,7 @@ namespace InsectAutoSystem2
         private Camera camera;
         private Scale scale;
         private Sensor sensor;
+        private Controller controller;
         Thread scaleThread;
         Thread getWeightThread;
         Thread readSonsorThread;
@@ -39,7 +41,7 @@ namespace InsectAutoSystem2
             scaleConnectCheck = false;
             sensorConnectCheck = false;
             weight = 0;
-    }
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -121,7 +123,6 @@ namespace InsectAutoSystem2
         {
             while(true) {
                 weight = scale.getWeight();
-                Console.WriteLine(weight);
                 Thread.Sleep(100);
             }
         }
@@ -148,6 +149,27 @@ namespace InsectAutoSystem2
                 Thread.Sleep(1000);
             }
 
+        }
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Console.WriteLine(e.KeyChar);
+            tbBoxCode.Text += e.KeyChar.ToString();
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            controller.sendCommand("motor_stop");
+        }
+
+        private void btnConnectController_Click(object sender, EventArgs e)
+        {
+            controller = new Controller(cbControlPort.Text);
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            controller.sendCommand("motor_run");
         }
     }
 }
