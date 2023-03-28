@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -126,6 +127,5 @@ namespace InsectAutoSystem2
                 FinalVideo.Stop();
             }
         }
-
     }
 }

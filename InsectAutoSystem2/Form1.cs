@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO.Ports;
 using System.Linq;
+using System.Management;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace InsectAutoSystem2
 {
     delegate void ShowVideoFrameDelegate(Bitmap videoFrame);
     delegate void ShowMessageDelegate(String Str);
+    delegate void MonitorControllerDataDelegate(String strData);
 
     public partial class Form1 : Form
     {
@@ -28,9 +30,23 @@ namespace InsectAutoSystem2
         Thread scaleThread;
         Thread getWeightThread;
         Thread readSonsorThread;
+        Thread feedThread;
+
         private bool scaleConnectCheck;
         private bool sensorConnectCheck;
         private float weight;
+        private String controllerData;
+        private FeedState feedState;
+        private double targetFeedWeight = 6;
+
+        enum FeedState
+        {
+            None,
+            NewBox,
+            Feeding,
+            Full,
+            End
+        }
 
         public Form1()
         {
@@ -38,6 +54,7 @@ namespace InsectAutoSystem2
             readSonsorThread = new Thread(readSensor);
             getWeightThread = new Thread(refreshWeight);
             scaleThread = new Thread(readScale);
+            feedThread = new Thread(feed);
             scaleConnectCheck = false;
             sensorConnectCheck = false;
             weight = 0;
@@ -49,13 +66,32 @@ namespace InsectAutoSystem2
             ShowMessageDelegate del1 = showMessage;
             camera = new Camera(del, del1);
             setSerialPort();
+            feedState = FeedState.None;
+        }
+
+        private void monitorControllerData(String strData)
+        {
+            var responseValues = strData.Split(',');
+            if (Int32.Parse(responseValues[3])==1) //센서1에 물체가 감지되면
+            {
+                if(feedState == FeedState.None)
+                {
+                    feedState = FeedState.NewBox;
+                    feedThread.Start();
+                }
+            }
         }
 
         private void setSerialPort()
         {
-            cbScalePort.DataSource = SerialPort.GetPortNames();
-            cbSensorPort.DataSource = SerialPort.GetPortNames();
-            cbControlPort.DataSource = SerialPort.GetPortNames();
+            using (var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity WHERE Caption like '%(COM%'"))
+            {
+                var portnames = SerialPort.GetPortNames();
+                var ports = searcher.Get().Cast<ManagementBaseObject>().ToList().Select(p => p["Caption"].ToString());
+                cbScalePort.DataSource = portnames.Select(n => n + " - " + ports.FirstOrDefault(s => s.Contains(n))).ToList();
+                cbSensorPort.DataSource = portnames.Select(n => n + " - " + ports.FirstOrDefault(s => s.Contains(n))).ToList();
+                cbControlPort.DataSource = portnames.Select(n => n + " - " + ports.FirstOrDefault(s => s.Contains(n))).ToList();
+            }
         }
 
         private void readScale()
@@ -107,7 +143,9 @@ namespace InsectAutoSystem2
         private void btnConnectScale_Click(object sender, EventArgs e)
         {
             ShowMessageDelegate del = showMessage;
-            scale = new Scale(cbScalePort.Text, del);
+            string str = (cbScalePort.Text).Split('-')[0];
+            str = str.Replace(" ", "");
+            scale = new Scale(str, del);
             scaleThread.Start();
             getWeightThread.Start();
         }
@@ -115,7 +153,9 @@ namespace InsectAutoSystem2
         private void btnConnectSensor_Click(object sender, EventArgs e)
         {
             ShowMessageDelegate del = showMessage;
-            sensor = new Sensor(cbSensorPort.Text,del);
+            string str = (cbSensorPort.Text).Split('-')[0];
+            str = str.Replace(" ", "");
+            sensor = new Sensor(str, del);
             readSonsorThread.Start();
         }
 
@@ -153,23 +193,43 @@ namespace InsectAutoSystem2
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Console.WriteLine(e.KeyChar);
             tbBoxCode.Text += e.KeyChar.ToString();
         }
 
         private void btnStop_Click(object sender, EventArgs e)
         {
             controller.sendCommand("motor_stop");
+            controller.sendCommand("shuttle_stop");
         }
 
         private void btnConnectController_Click(object sender, EventArgs e)
         {
-            controller = new Controller(cbControlPort.Text);
+            MonitorControllerDataDelegate del2 = monitorControllerData;
+            ShowMessageDelegate del = showMessage;
+            string str = (cbControlPort.Text).Split('-')[0];
+            str = str.Replace(" ", "");
+            controller = new Controller(str, del2);
         }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
             controller.sendCommand("motor_run");
+        }
+
+        private void feed()
+        {
+            if (weight < targetFeedWeight)
+            {
+                controller.sendCommand("shuttle_run");
+                feedState = FeedState.Feeding;
+                while (weight < targetFeedWeight && feedState == FeedState.Feeding) {
+                    Console.WriteLine("무게 : " + weight);
+                }
+                controller.sendCommand("shuttle_stop");
+                feedState = FeedState.Full;
+                controller.sendCommand("motor_run");
+                feedState = FeedState.None;
+            }
         }
     }
 }
