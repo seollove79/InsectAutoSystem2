@@ -21,7 +21,7 @@ namespace InsectAutoSystem2
             showMessageDelegate = del;
             serialPortName = strSerialPortName;
         }
-        
+
         public void setSerialPort()
         {
             serialPort.PortName = serialPortName;  // TODO: 장치이름으로 자동으로 잡히게 해야 한다.
@@ -47,7 +47,7 @@ namespace InsectAutoSystem2
             string str = serialPort.ReadLine();
             str = str.Replace(" ", string.Empty);
             weight = float.Parse(str);
-            Console.WriteLine(weight);
+            //Console.WriteLine(weight);
         }
 
         public float getWeight()

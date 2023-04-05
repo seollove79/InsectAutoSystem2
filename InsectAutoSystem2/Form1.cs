@@ -21,6 +21,7 @@ namespace InsectAutoSystem2
     delegate void ShowMessageDelegate(String Str);
     delegate void MonitorControllerDataDelegate(String strData);
 
+
     public partial class Form1 : Form
     {
         private Camera camera;
@@ -29,34 +30,39 @@ namespace InsectAutoSystem2
         private Controller controller;
         Thread scaleThread;
         Thread getWeightThread;
-        Thread readSonsorThread;
-        Thread feedThread;
+        Thread runThread;
+        Thread measureThread;
+        //Thread readSensorThread;
 
-        private bool scaleConnectCheck;
-        private bool sensorConnectCheck;
+
+
+        private bool scaleConnectCheck = false;
+        private bool sensorConnectCheck = false;
+        private bool controllerConnectCheck = false;
         private float weight;
         private String controllerData;
-        private FeedState feedState;
-        private double targetFeedWeight = 6;
+        private String rfidCode;
+        private bool runThreadEnable = false;
+        private bool motorRun = false;
 
-        enum FeedState
-        {
-            None,
-            NewBox,
-            Feeding,
-            Full,
-            End
-        }
+        const int MEASURE_TIME = 10; //측정시간
+        const int DOWN_TIME = 35; //측정시간
+        const int UP_TIME = 35; //측정시간
 
         public Form1()
         {
             InitializeComponent();
-            readSonsorThread = new Thread(readSensor);
             getWeightThread = new Thread(refreshWeight);
             scaleThread = new Thread(readScale);
-            feedThread = new Thread(feed);
+            runThread = new Thread(run);
+            measureThread = new Thread(measure);
             scaleConnectCheck = false;
-            sensorConnectCheck = false;
+        }
+
+        private void init()
+        {
+            //초기화
+            DeviceState.setMeasureState(DeviceState.MeasureState.None);
             weight = 0;
         }
 
@@ -66,19 +72,25 @@ namespace InsectAutoSystem2
             ShowMessageDelegate del1 = showMessage;
             camera = new Camera(del, del1);
             setSerialPort();
-            feedState = FeedState.None;
+            init();
         }
 
         private void monitorControllerData(String strData)
         {
             var responseValues = strData.Split(',');
-            if (Int32.Parse(responseValues[3])==1) //센서1에 물체가 감지되면
+            if (Int32.Parse(responseValues[3]) == 1) //센서1에 물체가 감지되면
             {
-                if(feedState == FeedState.None)
+                if(Int32.Parse(responseValues[1]) == 0) //컨베이어가 멈춰 있으면
                 {
-                    feedState = FeedState.NewBox;
-                    feedThread.Start();
+                    if (DeviceState.getMeasureState() == DeviceState.MeasureState.None)
+                    {
+                        DeviceState.setMeasureState(DeviceState.MeasureState.NewBox);
+                    }
                 }
+            }
+            else if (Int32.Parse(responseValues[3]) == 0) //1번 센서에 물체가 없으면
+            {
+                DeviceState.setMeasureState(DeviceState.MeasureState.None);
             }
         }
 
@@ -88,9 +100,35 @@ namespace InsectAutoSystem2
             {
                 var portnames = SerialPort.GetPortNames();
                 var ports = searcher.Get().Cast<ManagementBaseObject>().ToList().Select(p => p["Caption"].ToString());
+
+                //TODO 자동연결 되도록 처리해야함
+/*                foreach (string port in ports)
+                {
+                    if (port.Contains("Silicon Labs CP210x USB to UART Bridge"))
+                    {
+                        ShowMessageDelegate del1 = showMessage;
+                        MonitorControllerDataDelegate del2 = monitorControllerData;
+                        string str = port.Split('(')[1];
+                        str = str.Replace(" ", "");
+                        str = str.Replace(")", "");
+                        controller = new Controller(str, del2, del1);
+                    }
+
+                    if (port.Contains("Prolific USB"))
+                    {
+                        ShowMessageDelegate del = showMessage;
+                        string str = port.Split('(')[1];
+                        str = str.Replace(" ", "");
+                        str = str.Replace(")", "");
+                        scale = new Scale(str, del);
+                        scaleThread.Start();
+                        getWeightThread.Start();
+                    }
+                }*/
+
                 cbScalePort.DataSource = portnames.Select(n => n + " - " + ports.FirstOrDefault(s => s.Contains(n))).ToList();
-                cbSensorPort.DataSource = portnames.Select(n => n + " - " + ports.FirstOrDefault(s => s.Contains(n))).ToList();
                 cbControlPort.DataSource = portnames.Select(n => n + " - " + ports.FirstOrDefault(s => s.Contains(n))).ToList();
+                cbSensorPort.DataSource = portnames.Select(n => n + " - " + ports.FirstOrDefault(s => s.Contains(n))).ToList();
             }
         }
 
@@ -101,7 +139,17 @@ namespace InsectAutoSystem2
 
         private void btnSnapshot_Click(object sender, EventArgs e)
         {
-            camera.makeSnapshot();
+            controller.sendCommand("measure_up");
+            //camera.makeSnapshot();
+        }
+
+        private void btnConnectSensor_Click(object sender, EventArgs e)
+        {
+            ShowMessageDelegate del = showMessage;
+            string str = (cbSensorPort.Text).Split('-')[0];
+            str = str.Replace(" ", "");
+            sensor = new Sensor(str, del);
+            //readSensorThread.Start();
         }
 
         private void showVideoFrame(Bitmap videoFrame)
@@ -123,7 +171,7 @@ namespace InsectAutoSystem2
 
         private void showMessage(string str)
         {
-            this.Invoke(new Action(delegate () { 
+            this.Invoke(new Action(delegate () {
                 tbLog.Text += str + "\n";
                 if (str == "저울이 연결되었습니다.\r\n")
                 {
@@ -131,6 +179,14 @@ namespace InsectAutoSystem2
                     btnConnectScale.Enabled = false;
                     scaleConnectCheck = true;
                 }
+
+                if (str == "제어기가 연결되었습니다.\r\n")
+                {
+                    cbControlPort.Enabled = false;
+                    btnConnectController.Enabled = false;
+                    controllerConnectCheck = true;
+                }
+
                 if (str == "센서가 연결되었습니다.\r\n")
                 {
                     cbSensorPort.Enabled = false;
@@ -150,27 +206,124 @@ namespace InsectAutoSystem2
             getWeightThread.Start();
         }
 
-        private void btnConnectSensor_Click(object sender, EventArgs e)
-        {
-            ShowMessageDelegate del = showMessage;
-            string str = (cbSensorPort.Text).Split('-')[0];
-            str = str.Replace(" ", "");
-            sensor = new Sensor(str, del);
-            readSonsorThread.Start();
-        }
-
         private void refreshWeight()
         {
-            while(true) {
+            while (true)
+            {
                 weight = scale.getWeight();
-                Thread.Sleep(100);
+                this.Invoke(new Action(delegate () {
+                    tbWeight.Text = weight.ToString();
+                }));
+            }
+        }
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            /*if (e.KeyChar != '#')
+            {
+                rfidCode += e.KeyChar;
+            }
+            else
+            {
+                if (rfidCode != tbBoxCode.Text)
+                {
+                    tbBoxCode.Text = rfidCode;
+                }
+                rfidCode = "";
+            }*/
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            motorRun = false;
+            controller.sendCommand("motor_stop");
+            controller.sendCommand("shuttle_stop");
+        }
+
+        private void btnConnectController_Click(object sender, EventArgs e)
+        {
+            ShowMessageDelegate del1 = showMessage;
+            MonitorControllerDataDelegate del2 = monitorControllerData;
+            string str = (cbControlPort.Text).Split('-')[0];
+            str = str.Replace(" ", "");
+            controller = new Controller(str, del2, del1);
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            DeviceState.setMeasureState(DeviceState.MeasureState.None);
+            motorRun = true;
+            if (!runThread.IsAlive)
+            {
+                runThread.Start();
+            }
+            if (!measureThread.IsAlive)
+            {
+                measureThread.Start();
+            }
+        }
+
+        private void measure()
+        {
+            while (true)
+            {
+                if (DeviceState.getMeasureState() == DeviceState.MeasureState.NewBox)
+                {
+                    controller.sendCommand("measure_down");
+                    Console.WriteLine("다운시작");
+                    DeviceState.setMeasureState(DeviceState.MeasureState.Measuring);
+                    Thread.Sleep(DOWN_TIME * 1000);
+                    Console.WriteLine("다운완료");
+                    Console.WriteLine("측정시작");
+                    Thread.Sleep(MEASURE_TIME * 1000);
+                    Console.WriteLine("측정완료");
+                    controller.sendCommand("measure_up");
+                    Console.WriteLine("업시작");
+                    Thread.Sleep(UP_TIME * 1000);
+                    Console.WriteLine("업완료");
+                    DeviceState.setMeasureState(DeviceState.MeasureState.Finish);
+                    DeviceState.setMeasureState(DeviceState.MeasureState.End);
+
+                    /*while (weight < DeviceState.targetMeasureWeight && DeviceState.getMeasureState() == DeviceState.MeasureState.Measuring)
+                    {
+
+                    }*/
+                }
+            }
+        }
+
+        private void run()
+        {
+            while (true)
+            {
+                if (motorRun == true && (DeviceState.getMeasureState() == DeviceState.MeasureState.None || DeviceState.getMeasureState() == DeviceState.MeasureState.End))
+                {
+                    controller.sendCommand("motor_run");
+                }
+                Thread.Sleep(2000);
+            }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (scaleThread.IsAlive)
+            {
+                scaleThread.Abort();
+            }
+            if (getWeightThread.IsAlive)
+            {
+                getWeightThread.Abort();
+            }
+            if (runThread.IsAlive)
+            {
+                runThread.Abort();
             }
         }
 
         private void readSensor()
         {
             double[] sensorValue = new double[4];
-            for(int i=1; i<=120; i++)
+            for (int i = 1; i <= MEASURE_TIME; i++)
             {
                 int[] values = sensor.read();
                 sensorValue[0] = sensorValue[0] + (values[0] / 100.0 - 55.0); //온도저장
@@ -180,7 +333,7 @@ namespace InsectAutoSystem2
 
                 this.Invoke(new Action(delegate ()
                 {
-                    tbTemperature.Text = Math.Round((sensorValue[0] / i),2).ToString();
+                    tbTemperature.Text = Math.Round((sensorValue[0] / i), 2).ToString();
                     tbHumidity.Text = Math.Round((sensorValue[1] / i), 2).ToString();
                     tbCO2.Text = Math.Round((sensorValue[2] / i), 2).ToString();
                     tbNH3.Text = Math.Round((sensorValue[3] / i), 2).ToString();
@@ -188,48 +341,11 @@ namespace InsectAutoSystem2
 
                 Thread.Sleep(1000);
             }
-
         }
 
-        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
-            tbBoxCode.Text += e.KeyChar.ToString();
-        }
-
-        private void btnStop_Click(object sender, EventArgs e)
-        {
-            controller.sendCommand("motor_stop");
-            controller.sendCommand("shuttle_stop");
-        }
-
-        private void btnConnectController_Click(object sender, EventArgs e)
-        {
-            MonitorControllerDataDelegate del2 = monitorControllerData;
-            ShowMessageDelegate del = showMessage;
-            string str = (cbControlPort.Text).Split('-')[0];
-            str = str.Replace(" ", "");
-            controller = new Controller(str, del2);
-        }
-
-        private void btnStart_Click(object sender, EventArgs e)
-        {
-            controller.sendCommand("motor_run");
-        }
-
-        private void feed()
-        {
-            if (weight < targetFeedWeight)
-            {
-                controller.sendCommand("shuttle_run");
-                feedState = FeedState.Feeding;
-                while (weight < targetFeedWeight && feedState == FeedState.Feeding) {
-                    Console.WriteLine("무게 : " + weight);
-                }
-                controller.sendCommand("shuttle_stop");
-                feedState = FeedState.Full;
-                controller.sendCommand("motor_run");
-                feedState = FeedState.None;
-            }
+            //measureDownWorker.RunWorkerAsync();
         }
     }
 }

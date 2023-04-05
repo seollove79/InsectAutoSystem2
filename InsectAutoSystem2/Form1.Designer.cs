@@ -67,6 +67,8 @@ namespace InsectAutoSystem2
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label12 = new System.Windows.Forms.Label();
             this.tbBoxCode = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tbWeight = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -122,6 +124,7 @@ namespace InsectAutoSystem2
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.72727F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.72727F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.27273F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(390, 855);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
@@ -489,6 +492,7 @@ namespace InsectAutoSystem2
             this.button3.TabIndex = 6;
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // groupBox4
             // 
@@ -508,10 +512,13 @@ namespace InsectAutoSystem2
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel4.Controls.Add(this.label12, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.tbBoxCode, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label13, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.tbWeight, 1, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 17);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowCount = 3;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.Size = new System.Drawing.Size(378, 168);
@@ -536,6 +543,26 @@ namespace InsectAutoSystem2
             this.tbBoxCode.Size = new System.Drawing.Size(313, 21);
             this.tbBoxCode.TabIndex = 1;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label13.Location = new System.Drawing.Point(3, 25);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(53, 25);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "상자무게";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tbWeight
+            // 
+            this.tbWeight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbWeight.Location = new System.Drawing.Point(62, 28);
+            this.tbWeight.Name = "tbWeight";
+            this.tbWeight.ReadOnly = true;
+            this.tbWeight.Size = new System.Drawing.Size(313, 21);
+            this.tbWeight.TabIndex = 3;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -544,7 +571,7 @@ namespace InsectAutoSystem2
             this.Controls.Add(this.tableLayoutPanel1);
             this.KeyPreview = true;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "누에계측시스템 - 강원도 농산물 원종장 잠사곤충";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -605,6 +632,8 @@ namespace InsectAutoSystem2
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox tbBoxCode;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox tbWeight;
     }
 }
 
