@@ -139,8 +139,7 @@ namespace InsectAutoSystem2
 
         private void btnSnapshot_Click(object sender, EventArgs e)
         {
-            controller.sendCommand("measure_up");
-            //camera.makeSnapshot();
+            camera.makeSnapshot();
         }
 
         private void btnConnectSensor_Click(object sender, EventArgs e)
@@ -214,6 +213,7 @@ namespace InsectAutoSystem2
                 this.Invoke(new Action(delegate () {
                     tbWeight.Text = weight.ToString();
                 }));
+                Thread.Sleep(2000);
             }
         }
 
@@ -269,13 +269,38 @@ namespace InsectAutoSystem2
             {
                 if (DeviceState.getMeasureState() == DeviceState.MeasureState.NewBox)
                 {
+                    Thread.Sleep(3000);
+                    Console.WriteLine("이미지데이터 수집 완료");
+                    this.Invoke(new Action(delegate () {
+                        camera.makeSnapshot();
+                    }));
                     controller.sendCommand("measure_down");
                     Console.WriteLine("다운시작");
                     DeviceState.setMeasureState(DeviceState.MeasureState.Measuring);
                     Thread.Sleep(DOWN_TIME * 1000);
                     Console.WriteLine("다운완료");
                     Console.WriteLine("측정시작");
-                    Thread.Sleep(MEASURE_TIME * 1000);
+
+                    double[] sensorValue = new double[4];
+                    for (int i = 1; i <= MEASURE_TIME; i++)
+                    {
+                        int[] values = sensor.read();
+                        sensorValue[0] = sensorValue[0] + (values[0] / 100.0 - 55.0); //온도저장
+                        sensorValue[1] = sensorValue[1] + (values[3] / 100.0); //습도저장
+                        sensorValue[2] = sensorValue[2] + values[7]; //이산화탄소
+                        sensorValue[3] = sensorValue[3] + values[8]; //암모니아
+
+                        this.Invoke(new Action(delegate ()
+                        {
+                            tbTemperature.Text = Math.Round((sensorValue[0] / i), 2).ToString();
+                            tbHumidity.Text = Math.Round((sensorValue[1] / i), 2).ToString();
+                            tbCO2.Text = Math.Round((sensorValue[2] / i), 2).ToString();
+                            tbNH3.Text = Math.Round((sensorValue[3] / i), 2).ToString();
+                        }));
+
+                        Thread.Sleep(1000);
+                    }
+
                     Console.WriteLine("측정완료");
                     controller.sendCommand("measure_up");
                     Console.WriteLine("업시작");
@@ -283,11 +308,6 @@ namespace InsectAutoSystem2
                     Console.WriteLine("업완료");
                     DeviceState.setMeasureState(DeviceState.MeasureState.Finish);
                     DeviceState.setMeasureState(DeviceState.MeasureState.End);
-
-                    /*while (weight < DeviceState.targetMeasureWeight && DeviceState.getMeasureState() == DeviceState.MeasureState.Measuring)
-                    {
-
-                    }*/
                 }
             }
         }
