@@ -84,7 +84,15 @@ namespace InsectAutoSystem2
             }
 
             // 이미지를 저장합니다.
-            videoFrame.Save(filePath, encoder, encoderParams);
+            try
+            {
+                videoFrame.Save(filePath, encoder, encoderParams);
+            }
+            catch(Exception ex)
+            {
+                showMessageDelegate(ex.Message + "\r\n");
+            }
+            
 
             // ImageCodecInfo 객체와 EncoderParameter 객체 배열을 해제합니다.
             encoderParams.Dispose();

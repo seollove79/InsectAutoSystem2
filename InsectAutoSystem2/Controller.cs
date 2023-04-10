@@ -83,6 +83,14 @@ namespace InsectAutoSystem2
                 serialPort.Write(bytes, 0, 4);
                 serialPort.Write("\r\n");
             }
+
+            if (command == "get_info")
+            {
+                serialPort.Write("!");
+                byte[] bytes = { 0x00, 0x01, 0x0a, 0xe0 };
+                serialPort.Write(bytes, 0, 4);
+                serialPort.Write("\r\n");
+            }
         }
 
 

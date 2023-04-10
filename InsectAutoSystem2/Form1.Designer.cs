@@ -59,16 +59,17 @@ namespace InsectAutoSystem2
             this.cbControlPort = new System.Windows.Forms.ComboBox();
             this.tbLog = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSnapshot = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label12 = new System.Windows.Forms.Label();
             this.tbBoxCode = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.tbWeight = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.cbCardreaderPort = new System.Windows.Forms.ComboBox();
+            this.btnConnectCardreader = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -93,7 +94,7 @@ namespace InsectAutoSystem2
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1584, 861);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1904, 1041);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // pictureBox1
@@ -101,7 +102,7 @@ namespace InsectAutoSystem2
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1182, 855);
+            this.pictureBox1.Size = new System.Drawing.Size(1422, 1035);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -116,25 +117,25 @@ namespace InsectAutoSystem2
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel5, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.groupBox4, 0, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(1191, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(1431, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.18182F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.72727F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.72727F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.27273F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(390, 855);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 250F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(470, 1035);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.tableLayoutPanel6);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(3, 429);
+            this.groupBox2.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox2.Location = new System.Drawing.Point(3, 603);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(384, 188);
+            this.groupBox2.Size = new System.Drawing.Size(464, 144);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "환경정보";
@@ -160,23 +161,24 @@ namespace InsectAutoSystem2
             this.tableLayoutPanel6.Controls.Add(this.tbHumidity, 4, 0);
             this.tableLayoutPanel6.Controls.Add(this.tbCO2, 1, 1);
             this.tableLayoutPanel6.Controls.Add(this.tbNH3, 4, 1);
-            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 17);
+            this.tableLayoutPanel6.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 24);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 3;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(378, 168);
+            this.tableLayoutPanel6.RowCount = 2;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(458, 100);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label4.Location = new System.Drawing.Point(30, 0);
+            this.label4.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label4.Location = new System.Drawing.Point(21, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 25);
+            this.label4.Size = new System.Drawing.Size(52, 50);
             this.label4.TabIndex = 0;
             this.label4.Text = "온도";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -185,9 +187,10 @@ namespace InsectAutoSystem2
             // 
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label5.Location = new System.Drawing.Point(127, 0);
+            this.label5.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.Location = new System.Drawing.Point(155, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(17, 25);
+            this.label5.Size = new System.Drawing.Size(31, 50);
             this.label5.TabIndex = 1;
             this.label5.Text = "℃";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -196,9 +199,10 @@ namespace InsectAutoSystem2
             // 
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label6.Location = new System.Drawing.Point(216, 0);
+            this.label6.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label6.Location = new System.Drawing.Point(249, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(29, 25);
+            this.label6.Size = new System.Drawing.Size(52, 50);
             this.label6.TabIndex = 2;
             this.label6.Text = "습도";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -207,9 +211,9 @@ namespace InsectAutoSystem2
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label7.Location = new System.Drawing.Point(313, 0);
+            this.label7.Location = new System.Drawing.Point(383, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(15, 25);
+            this.label7.Size = new System.Drawing.Size(29, 50);
             this.label7.TabIndex = 3;
             this.label7.Text = "%";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -218,9 +222,10 @@ namespace InsectAutoSystem2
             // 
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label8.Location = new System.Drawing.Point(30, 25);
+            this.label8.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label8.Location = new System.Drawing.Point(22, 50);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(29, 25);
+            this.label8.Size = new System.Drawing.Size(51, 50);
             this.label8.TabIndex = 4;
             this.label8.Text = "CO2";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -229,9 +234,10 @@ namespace InsectAutoSystem2
             // 
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label9.Location = new System.Drawing.Point(127, 25);
+            this.label9.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label9.Location = new System.Drawing.Point(155, 50);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(30, 25);
+            this.label9.Size = new System.Drawing.Size(54, 50);
             this.label9.TabIndex = 5;
             this.label9.Text = "ppm";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -240,9 +246,10 @@ namespace InsectAutoSystem2
             // 
             this.label10.AutoSize = true;
             this.label10.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label10.Location = new System.Drawing.Point(217, 25);
+            this.label10.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label10.Location = new System.Drawing.Point(249, 50);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(28, 25);
+            this.label10.Size = new System.Drawing.Size(52, 50);
             this.label10.TabIndex = 6;
             this.label10.Text = "NH3";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -251,9 +258,9 @@ namespace InsectAutoSystem2
             // 
             this.label11.AutoSize = true;
             this.label11.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label11.Location = new System.Drawing.Point(313, 25);
+            this.label11.Location = new System.Drawing.Point(383, 50);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(30, 25);
+            this.label11.Size = new System.Drawing.Size(54, 50);
             this.label11.TabIndex = 7;
             this.label11.Text = "ppm";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -261,46 +268,51 @@ namespace InsectAutoSystem2
             // tbTemperature
             // 
             this.tbTemperature.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbTemperature.Location = new System.Drawing.Point(65, 3);
+            this.tbTemperature.Location = new System.Drawing.Point(79, 7);
+            this.tbTemperature.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
             this.tbTemperature.Name = "tbTemperature";
             this.tbTemperature.ReadOnly = true;
-            this.tbTemperature.Size = new System.Drawing.Size(56, 21);
+            this.tbTemperature.Size = new System.Drawing.Size(70, 34);
             this.tbTemperature.TabIndex = 8;
             // 
             // tbHumidity
             // 
             this.tbHumidity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbHumidity.Location = new System.Drawing.Point(251, 3);
+            this.tbHumidity.Location = new System.Drawing.Point(307, 7);
+            this.tbHumidity.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
             this.tbHumidity.Name = "tbHumidity";
             this.tbHumidity.ReadOnly = true;
-            this.tbHumidity.Size = new System.Drawing.Size(56, 21);
+            this.tbHumidity.Size = new System.Drawing.Size(70, 34);
             this.tbHumidity.TabIndex = 9;
             // 
             // tbCO2
             // 
             this.tbCO2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbCO2.Location = new System.Drawing.Point(65, 28);
+            this.tbCO2.Location = new System.Drawing.Point(79, 57);
+            this.tbCO2.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
             this.tbCO2.Name = "tbCO2";
             this.tbCO2.ReadOnly = true;
-            this.tbCO2.Size = new System.Drawing.Size(56, 21);
+            this.tbCO2.Size = new System.Drawing.Size(70, 34);
             this.tbCO2.TabIndex = 10;
             // 
             // tbNH3
             // 
             this.tbNH3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbNH3.Location = new System.Drawing.Point(251, 28);
+            this.tbNH3.Location = new System.Drawing.Point(307, 57);
+            this.tbNH3.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
             this.tbNH3.Name = "tbNH3";
             this.tbNH3.ReadOnly = true;
-            this.tbNH3.Size = new System.Drawing.Size(56, 21);
+            this.tbNH3.Size = new System.Drawing.Size(70, 34);
             this.tbNH3.TabIndex = 11;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.tableLayoutPanel3);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(384, 149);
+            this.groupBox1.Size = new System.Drawing.Size(464, 244);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "장비연결 설정";
@@ -320,32 +332,38 @@ namespace InsectAutoSystem2
             this.tableLayoutPanel3.Controls.Add(this.btnConnectController, 2, 2);
             this.tableLayoutPanel3.Controls.Add(this.cbSensorPort, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.cbControlPort, 1, 2);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 17);
+            this.tableLayoutPanel3.Controls.Add(this.label14, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.cbCardreaderPort, 1, 3);
+            this.tableLayoutPanel3.Controls.Add(this.btnConnectCardreader, 2, 3);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 3;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(378, 129);
+            this.tableLayoutPanel3.RowCount = 4;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(464, 202);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 58);
+            this.label3.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.Location = new System.Drawing.Point(3, 108);
             this.label3.Margin = new System.Windows.Forms.Padding(3, 8, 3, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 12);
+            this.label3.Size = new System.Drawing.Size(114, 28);
             this.label3.TabIndex = 6;
             this.label3.Text = "3. 제어연결";
             // 
             // btnConnectSensor
             // 
-            this.btnConnectSensor.Location = new System.Drawing.Point(282, 25);
+            this.btnConnectSensor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnConnectSensor.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnConnectSensor.Location = new System.Drawing.Point(329, 50);
             this.btnConnectSensor.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.btnConnectSensor.Name = "btnConnectSensor";
-            this.btnConnectSensor.Size = new System.Drawing.Size(75, 22);
+            this.btnConnectSensor.Size = new System.Drawing.Size(132, 47);
             this.btnConnectSensor.TabIndex = 5;
             this.btnConnectSensor.Text = "연결";
             this.btnConnectSensor.UseVisualStyleBackColor = true;
@@ -354,19 +372,22 @@ namespace InsectAutoSystem2
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 33);
+            this.label2.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Location = new System.Drawing.Point(3, 58);
             this.label2.Margin = new System.Windows.Forms.Padding(3, 8, 3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 12);
+            this.label2.Size = new System.Drawing.Size(114, 28);
             this.label2.TabIndex = 3;
             this.label2.Text = "2. 센서연결";
             // 
             // btnConnectScale
             // 
-            this.btnConnectScale.Location = new System.Drawing.Point(282, 0);
+            this.btnConnectScale.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnConnectScale.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnConnectScale.Location = new System.Drawing.Point(329, 0);
             this.btnConnectScale.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.btnConnectScale.Name = "btnConnectScale";
-            this.btnConnectScale.Size = new System.Drawing.Size(75, 22);
+            this.btnConnectScale.Size = new System.Drawing.Size(132, 47);
             this.btnConnectScale.TabIndex = 2;
             this.btnConnectScale.Text = "연결";
             this.btnConnectScale.UseVisualStyleBackColor = true;
@@ -375,10 +396,11 @@ namespace InsectAutoSystem2
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.Location = new System.Drawing.Point(3, 8);
             this.label1.Margin = new System.Windows.Forms.Padding(3, 8, 3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 12);
+            this.label1.Size = new System.Drawing.Size(114, 28);
             this.label1.TabIndex = 2;
             this.label1.Text = "1. 저울연결";
             // 
@@ -386,17 +408,21 @@ namespace InsectAutoSystem2
             // 
             this.cbScalePort.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbScalePort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbScalePort.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cbScalePort.FormattingEnabled = true;
-            this.cbScalePort.Location = new System.Drawing.Point(76, 3);
+            this.cbScalePort.Location = new System.Drawing.Point(123, 7);
+            this.cbScalePort.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
             this.cbScalePort.Name = "cbScalePort";
-            this.cbScalePort.Size = new System.Drawing.Size(200, 20);
+            this.cbScalePort.Size = new System.Drawing.Size(200, 36);
             this.cbScalePort.TabIndex = 0;
             // 
             // btnConnectController
             // 
-            this.btnConnectController.Location = new System.Drawing.Point(282, 53);
+            this.btnConnectController.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnConnectController.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnConnectController.Location = new System.Drawing.Point(329, 103);
             this.btnConnectController.Name = "btnConnectController";
-            this.btnConnectController.Size = new System.Drawing.Size(75, 23);
+            this.btnConnectController.Size = new System.Drawing.Size(132, 44);
             this.btnConnectController.TabIndex = 8;
             this.btnConnectController.Text = "연결";
             this.btnConnectController.UseVisualStyleBackColor = true;
@@ -406,101 +432,88 @@ namespace InsectAutoSystem2
             // 
             this.cbSensorPort.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbSensorPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSensorPort.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cbSensorPort.FormattingEnabled = true;
-            this.cbSensorPort.Location = new System.Drawing.Point(76, 28);
+            this.cbSensorPort.Location = new System.Drawing.Point(123, 57);
+            this.cbSensorPort.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
             this.cbSensorPort.Name = "cbSensorPort";
-            this.cbSensorPort.Size = new System.Drawing.Size(200, 20);
+            this.cbSensorPort.Size = new System.Drawing.Size(200, 36);
             this.cbSensorPort.TabIndex = 9;
             // 
             // cbControlPort
             // 
             this.cbControlPort.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbControlPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbControlPort.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cbControlPort.FormattingEnabled = true;
-            this.cbControlPort.Location = new System.Drawing.Point(76, 53);
+            this.cbControlPort.Location = new System.Drawing.Point(123, 107);
+            this.cbControlPort.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
             this.cbControlPort.Name = "cbControlPort";
-            this.cbControlPort.Size = new System.Drawing.Size(200, 20);
+            this.cbControlPort.Size = new System.Drawing.Size(200, 36);
             this.cbControlPort.TabIndex = 10;
             // 
             // tbLog
             // 
+            this.tbLog.BackColor = System.Drawing.Color.White;
             this.tbLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbLog.Location = new System.Drawing.Point(3, 623);
+            this.tbLog.Location = new System.Drawing.Point(3, 753);
             this.tbLog.Multiline = true;
             this.tbLog.Name = "tbLog";
-            this.tbLog.Size = new System.Drawing.Size(384, 229);
+            this.tbLog.ReadOnly = true;
+            this.tbLog.Size = new System.Drawing.Size(464, 279);
             this.tbLog.TabIndex = 4;
             // 
             // tableLayoutPanel5
             // 
-            this.tableLayoutPanel5.ColumnCount = 4;
+            this.tableLayoutPanel5.ColumnCount = 2;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 79F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 105F));
-            this.tableLayoutPanel5.Controls.Add(this.btnSnapshot, 3, 0);
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel5.Controls.Add(this.btnStart, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.btnStop, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.button3, 2, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 158);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 253);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(384, 71);
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(464, 194);
             this.tableLayoutPanel5.TabIndex = 5;
-            // 
-            // btnSnapshot
-            // 
-            this.btnSnapshot.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSnapshot.Location = new System.Drawing.Point(282, 3);
-            this.btnSnapshot.Name = "btnSnapshot";
-            this.btnSnapshot.Size = new System.Drawing.Size(99, 65);
-            this.btnSnapshot.TabIndex = 3;
-            this.btnSnapshot.Text = "Snapshot";
-            this.btnSnapshot.UseVisualStyleBackColor = true;
-            this.btnSnapshot.Click += new System.EventHandler(this.btnSnapshot_Click);
             // 
             // btnStart
             // 
+            this.btnStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnStart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnStart.Font = new System.Drawing.Font("맑은 고딕", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnStart.Location = new System.Drawing.Point(3, 3);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(94, 65);
+            this.btnStart.Size = new System.Drawing.Size(226, 188);
             this.btnStart.TabIndex = 4;
-            this.btnStart.Text = "동작시작";
-            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Text = "시작";
+            this.btnStart.UseVisualStyleBackColor = false;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // btnStop
             // 
+            this.btnStop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnStop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnStop.Location = new System.Drawing.Point(103, 3);
+            this.btnStop.Font = new System.Drawing.Font("맑은 고딕", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnStop.Location = new System.Drawing.Point(235, 3);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(94, 65);
+            this.btnStop.Size = new System.Drawing.Size(226, 188);
             this.btnStop.TabIndex = 5;
-            this.btnStop.Text = "동작정지";
-            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Text = "정지";
+            this.btnStop.UseVisualStyleBackColor = false;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
-            // 
-            // button3
-            // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button3.Location = new System.Drawing.Point(203, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(73, 65);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.tableLayoutPanel4);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(3, 235);
+            this.groupBox4.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox4.Location = new System.Drawing.Point(3, 453);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(384, 188);
+            this.groupBox4.Size = new System.Drawing.Size(464, 144);
             this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "사육상자 정보";
@@ -514,42 +527,45 @@ namespace InsectAutoSystem2
             this.tableLayoutPanel4.Controls.Add(this.tbBoxCode, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.label13, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.tbWeight, 1, 1);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 17);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 28);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 3;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(378, 168);
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(461, 98);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label12.Location = new System.Drawing.Point(3, 0);
+            this.label12.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label12.Location = new System.Drawing.Point(3, 8);
+            this.label12.Margin = new System.Windows.Forms.Padding(3, 8, 3, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(53, 25);
+            this.label12.Size = new System.Drawing.Size(92, 28);
             this.label12.TabIndex = 0;
             this.label12.Text = "상자번호";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tbBoxCode
             // 
-            this.tbBoxCode.Location = new System.Drawing.Point(62, 3);
+            this.tbBoxCode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbBoxCode.Font = new System.Drawing.Font("맑은 고딕", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tbBoxCode.Location = new System.Drawing.Point(101, 3);
             this.tbBoxCode.Name = "tbBoxCode";
             this.tbBoxCode.ReadOnly = true;
-            this.tbBoxCode.Size = new System.Drawing.Size(313, 21);
+            this.tbBoxCode.Size = new System.Drawing.Size(357, 43);
             this.tbBoxCode.TabIndex = 1;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Location = new System.Drawing.Point(3, 25);
+            this.label13.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label13.Location = new System.Drawing.Point(3, 58);
+            this.label13.Margin = new System.Windows.Forms.Padding(3, 8, 3, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(53, 25);
+            this.label13.Size = new System.Drawing.Size(92, 28);
             this.label13.TabIndex = 2;
             this.label13.Text = "상자무게";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -557,21 +573,58 @@ namespace InsectAutoSystem2
             // tbWeight
             // 
             this.tbWeight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbWeight.Location = new System.Drawing.Point(62, 28);
+            this.tbWeight.Font = new System.Drawing.Font("맑은 고딕", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tbWeight.Location = new System.Drawing.Point(101, 53);
             this.tbWeight.Name = "tbWeight";
             this.tbWeight.ReadOnly = true;
-            this.tbWeight.Size = new System.Drawing.Size(313, 21);
+            this.tbWeight.Size = new System.Drawing.Size(357, 43);
             this.tbWeight.TabIndex = 3;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label14.Location = new System.Drawing.Point(3, 158);
+            this.label14.Margin = new System.Windows.Forms.Padding(3, 8, 3, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(114, 28);
+            this.label14.TabIndex = 11;
+            this.label14.Text = "4. 리더연결";
+            // 
+            // cbCardreaderPort
+            // 
+            this.cbCardreaderPort.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbCardreaderPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCardreaderPort.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.cbCardreaderPort.FormattingEnabled = true;
+            this.cbCardreaderPort.Location = new System.Drawing.Point(123, 157);
+            this.cbCardreaderPort.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
+            this.cbCardreaderPort.Name = "cbCardreaderPort";
+            this.cbCardreaderPort.Size = new System.Drawing.Size(200, 36);
+            this.cbCardreaderPort.TabIndex = 12;
+            // 
+            // btnConnectCardreader
+            // 
+            this.btnConnectCardreader.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnConnectCardreader.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnConnectCardreader.Location = new System.Drawing.Point(329, 153);
+            this.btnConnectCardreader.Name = "btnConnectCardreader";
+            this.btnConnectCardreader.Size = new System.Drawing.Size(132, 46);
+            this.btnConnectCardreader.TabIndex = 13;
+            this.btnConnectCardreader.Text = "연결";
+            this.btnConnectCardreader.UseVisualStyleBackColor = true;
+            this.btnConnectCardreader.Click += new System.EventHandler(this.btnConnectCardreader_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.Controls.Add(this.tableLayoutPanel1);
             this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "누에계측시스템 - 강원도 농산물 원종장 잠사곤충";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -598,7 +651,6 @@ namespace InsectAutoSystem2
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnSnapshot;
         private System.Windows.Forms.TextBox tbLog;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Button btnStart;
@@ -610,7 +662,6 @@ namespace InsectAutoSystem2
         private System.Windows.Forms.Button btnConnectSensor;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnConnectController;
         private System.Windows.Forms.ComboBox cbSensorPort;
@@ -634,6 +685,9 @@ namespace InsectAutoSystem2
         private System.Windows.Forms.TextBox tbBoxCode;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox tbWeight;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox cbCardreaderPort;
+        private System.Windows.Forms.Button btnConnectCardreader;
     }
 }
 
