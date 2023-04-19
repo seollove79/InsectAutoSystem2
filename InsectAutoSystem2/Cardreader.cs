@@ -81,6 +81,15 @@ namespace InsectAutoSystem2
             return cardNumber;
         }
 
+        public void close()
+        {
+            if(serialPort.IsOpen)
+            {
+                serialPort.Close();
+            }
+        }
+
+
         public void read()
         {
             byte[] readByte = { 0x23, 0x03, 0x02, 0x00, 0x02 };

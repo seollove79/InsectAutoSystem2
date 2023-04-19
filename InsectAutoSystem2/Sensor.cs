@@ -60,6 +60,14 @@ namespace InsectAutoSystem2
             return values;
         }
 
-        
+        public void close()
+        {
+            if (serialPort.IsOpen)
+            {
+                serialPort.Close();
+            }
+        }
+
+
     }
 }

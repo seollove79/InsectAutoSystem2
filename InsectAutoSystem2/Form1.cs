@@ -56,7 +56,7 @@ namespace InsectAutoSystem2
 
             measureWorker = new BackgroundWorker();
             //measureWorker.WorkerReportsProgress = true;
-            //measureWorker.WorkerSupportsCancellation = true;
+            measureWorker.WorkerSupportsCancellation = true;
             measureWorker.DoWork += new DoWorkEventHandler(measure);
             //measureWorker.ProgressChanged += new ProgressChangedEventHandler(worker_ProgressChanged);
             measureWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(measure_complete);
@@ -113,6 +113,48 @@ namespace InsectAutoSystem2
             {
                 var portnames = SerialPort.GetPortNames();
                 var ports = searcher.Get().Cast<ManagementBaseObject>().ToList().Select(p => p["Caption"].ToString());
+
+                foreach (string port in ports)
+                {
+                    if (port.Contains("COM201"))
+                    {
+                        ShowMessageDelegate del = showMessage;
+                        string str = port.Split('(')[1];
+                        str = str.Replace(" ", "");
+                        str = str.Replace(")", "");
+                        scale = new Scale(str, del);
+                        scale.setSerialPort();
+                        getWeightThread.Start();
+                    }
+
+                    if (port.Contains("COM202"))
+                    {
+                        ShowMessageDelegate del = showMessage;
+                        string str = (cbSensorPort.Text).Split('-')[0];
+                        str = str.Replace(" ", "");
+                        sensor = new Sensor("COM202", del);
+                    }
+
+                    if (port.Contains("COM203"))
+                    {
+                        ShowMessageDelegate del1 = showMessage;
+                        MonitorControllerDataDelegate del2 = monitorControllerData;
+                        string str = port.Split('(')[1];
+                        str = str.Replace(" ", "");
+                        str = str.Replace(")", "");
+                        controller = new Controller(str, del2, del1);
+                    }
+
+                    if (port.Contains("COM204"))
+                    {
+                        ShowMessageDelegate del = showMessage;
+                        string str = port.Split('(')[1];
+                        str = str.Replace(" ", "");
+                        str = str.Replace(")", "");
+                        cardreader = new Cardreader(str, del);
+                        cardreader.setSerialPort();
+                    }
+                }
 
                 cbScalePort.DataSource = portnames.Select(n => n + " - " + ports.FirstOrDefault(s => s.Contains(n))).ToList();
                 cbControlPort.DataSource = portnames.Select(n => n + " - " + ports.FirstOrDefault(s => s.Contains(n))).ToList();
@@ -263,7 +305,7 @@ namespace InsectAutoSystem2
             {
                 Thread.Sleep(3000);
                 this.Invoke(new Action(delegate () {
-                    camera.makeSnapshot(cardreader.getCardNumber());
+                    camera.makeSnapshot(tbBoxCode.Text);
                 }));
                 Thread.Sleep(2000);
                 this.Invoke(new Action(delegate () {
@@ -333,10 +375,36 @@ namespace InsectAutoSystem2
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if (controller != null)
+            {
+                controller.close();
+            }
+
+            if (cardreader != null)
+            {
+                cardreader.close();
+            }
+
+            if (scale != null)
+            {
+                scale.close();
+            }
+
+            if (sensor != null)
+            {
+                sensor.close();
+            }
+
             if (getWeightThread.IsAlive)
             {
                 getWeightThread.Abort();
             }
+            if (getDeviceInfoThread.IsAlive)
+            {
+                getDeviceInfoThread.Abort();
+            }
+
+            Application.Exit();
         }
 
         private void readSensor()
@@ -360,6 +428,39 @@ namespace InsectAutoSystem2
 
                 Thread.Sleep(1000);
             }
+        }
+
+        private void Form1_FormClosing_1(object sender, FormClosingEventArgs e)
+        {
+            if (controller != null)
+            {
+                controller.close();
+            }
+
+            if (cardreader != null)
+            {
+                cardreader.close();
+            }
+
+            if (scale != null)
+            {
+                scale.close();
+            }
+
+            if (sensor != null)
+            {
+                sensor.close();
+            }
+
+            if (getWeightThread.IsAlive)
+            {
+                getWeightThread.Abort();
+            }
+            if (getDeviceInfoThread.IsAlive)
+            {
+                getDeviceInfoThread.Abort();
+            }
+            Application.Exit();
         }
     }
 }

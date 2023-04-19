@@ -623,6 +623,7 @@ namespace InsectAutoSystem2
             this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "누에계측시스템 - 강원도 농산물 원종장 잠사곤충";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing_1);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);

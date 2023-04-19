@@ -22,4 +22,3 @@ D:\devwork\InsectAutoSystem2\InsectAutoSystem2\obj\Release\InsectAutoSystem2.csp
 D:\devwork\InsectAutoSystem2\InsectAutoSystem2\obj\Release\InsectAutoSystem2.csproj.CopyComplete
 D:\devwork\InsectAutoSystem2\InsectAutoSystem2\obj\Release\InsectAutoSystem2.exe
 D:\devwork\InsectAutoSystem2\InsectAutoSystem2\obj\Release\InsectAutoSystem2.pdb
-D:\devwork\InsectAutoSystem2\InsectAutoSystem2\obj\Release\InsectAutoSystem2.csproj.AssemblyReference.cache

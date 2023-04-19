@@ -65,7 +65,7 @@ namespace InsectAutoSystem2
 
         public bool makeSnapshot(string cardNumber)
         {
-            string filePath = "d:\\" + cardNumber + ".bmp";
+            string filePath = "C:\\Users\\USER\\Documents\\누에계측시스템\\" + cardNumber + ".bmp";
             if (File.Exists(filePath)) // 파일이 존재하는 경우 memory leak이 발생한다.
             {
                 // 파일을 삭제하여 memory leak을 방지한다.
