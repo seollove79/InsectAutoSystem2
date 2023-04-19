@@ -63,9 +63,9 @@ namespace InsectAutoSystem2
             showVideoFrameDelegate(videoFrame);
         }
 
-        public bool makeSnapshot()
+        public bool makeSnapshot(string cardNumber)
         {
-            string filePath = "d:\\TestImage.bmp";
+            string filePath = "d:\\" + cardNumber + ".bmp";
             if (File.Exists(filePath)) // 파일이 존재하는 경우 memory leak이 발생한다.
             {
                 // 파일을 삭제하여 memory leak을 방지한다.
@@ -84,19 +84,12 @@ namespace InsectAutoSystem2
             }
 
             // 이미지를 저장합니다.
-            try
-            {
-                videoFrame.Save(filePath, encoder, encoderParams);
-            }
-            catch(Exception ex)
-            {
-                showMessageDelegate(ex.Message + "\r\n");
-            }
-            
+            videoFrame.Save(filePath, encoder, encoderParams);
 
             // ImageCodecInfo 객체와 EncoderParameter 객체 배열을 해제합니다.
             encoderParams.Dispose();
             // ImageCodecInfo 객체는 Dispose() 메서드를 호출하지 않아도 됩니다.
+            showMessageDelegate("이미지 촬영이 완료 되었습니다.\r\n");
 
             return true;
 

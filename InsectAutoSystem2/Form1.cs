@@ -263,7 +263,7 @@ namespace InsectAutoSystem2
             {
                 Thread.Sleep(3000);
                 this.Invoke(new Action(delegate () {
-                    camera.makeSnapshot();
+                    camera.makeSnapshot(cardreader.getCardNumber());
                 }));
                 Thread.Sleep(2000);
                 this.Invoke(new Action(delegate () {
@@ -360,11 +360,6 @@ namespace InsectAutoSystem2
 
                 Thread.Sleep(1000);
             }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            //measureDownWorker.RunWorkerAsync();
         }
     }
 }

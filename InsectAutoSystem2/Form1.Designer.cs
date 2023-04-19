@@ -57,6 +57,9 @@ namespace InsectAutoSystem2
             this.btnConnectController = new System.Windows.Forms.Button();
             this.cbSensorPort = new System.Windows.Forms.ComboBox();
             this.cbControlPort = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.cbCardreaderPort = new System.Windows.Forms.ComboBox();
+            this.btnConnectCardreader = new System.Windows.Forms.Button();
             this.tbLog = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.btnStart = new System.Windows.Forms.Button();
@@ -67,9 +70,6 @@ namespace InsectAutoSystem2
             this.tbBoxCode = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.tbWeight = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.cbCardreaderPort = new System.Windows.Forms.ComboBox();
-            this.btnConnectCardreader = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -320,9 +320,9 @@ namespace InsectAutoSystem2
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 3;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel3.Controls.Add(this.label3, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.btnConnectSensor, 2, 1);
             this.tableLayoutPanel3.Controls.Add(this.label2, 0, 1);
@@ -335,19 +335,18 @@ namespace InsectAutoSystem2
             this.tableLayoutPanel3.Controls.Add(this.label14, 0, 3);
             this.tableLayoutPanel3.Controls.Add(this.cbCardreaderPort, 1, 3);
             this.tableLayoutPanel3.Controls.Add(this.btnConnectCardreader, 2, 3);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 24);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(6, 33);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 4;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(464, 202);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(452, 200);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.Location = new System.Drawing.Point(3, 108);
             this.label3.Margin = new System.Windows.Forms.Padding(3, 8, 3, 0);
@@ -360,10 +359,10 @@ namespace InsectAutoSystem2
             // 
             this.btnConnectSensor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnConnectSensor.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnConnectSensor.Location = new System.Drawing.Point(329, 50);
+            this.btnConnectSensor.Location = new System.Drawing.Point(318, 50);
             this.btnConnectSensor.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.btnConnectSensor.Name = "btnConnectSensor";
-            this.btnConnectSensor.Size = new System.Drawing.Size(132, 47);
+            this.btnConnectSensor.Size = new System.Drawing.Size(131, 47);
             this.btnConnectSensor.TabIndex = 5;
             this.btnConnectSensor.Text = "연결";
             this.btnConnectSensor.UseVisualStyleBackColor = true;
@@ -384,10 +383,10 @@ namespace InsectAutoSystem2
             // 
             this.btnConnectScale.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnConnectScale.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnConnectScale.Location = new System.Drawing.Point(329, 0);
+            this.btnConnectScale.Location = new System.Drawing.Point(318, 0);
             this.btnConnectScale.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.btnConnectScale.Name = "btnConnectScale";
-            this.btnConnectScale.Size = new System.Drawing.Size(132, 47);
+            this.btnConnectScale.Size = new System.Drawing.Size(131, 47);
             this.btnConnectScale.TabIndex = 2;
             this.btnConnectScale.Text = "연결";
             this.btnConnectScale.UseVisualStyleBackColor = true;
@@ -410,19 +409,19 @@ namespace InsectAutoSystem2
             this.cbScalePort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbScalePort.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cbScalePort.FormattingEnabled = true;
-            this.cbScalePort.Location = new System.Drawing.Point(123, 7);
+            this.cbScalePort.Location = new System.Drawing.Point(138, 7);
             this.cbScalePort.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
             this.cbScalePort.Name = "cbScalePort";
-            this.cbScalePort.Size = new System.Drawing.Size(200, 36);
+            this.cbScalePort.Size = new System.Drawing.Size(174, 36);
             this.cbScalePort.TabIndex = 0;
             // 
             // btnConnectController
             // 
             this.btnConnectController.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnConnectController.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnConnectController.Location = new System.Drawing.Point(329, 103);
+            this.btnConnectController.Location = new System.Drawing.Point(318, 103);
             this.btnConnectController.Name = "btnConnectController";
-            this.btnConnectController.Size = new System.Drawing.Size(132, 44);
+            this.btnConnectController.Size = new System.Drawing.Size(131, 44);
             this.btnConnectController.TabIndex = 8;
             this.btnConnectController.Text = "연결";
             this.btnConnectController.UseVisualStyleBackColor = true;
@@ -434,10 +433,10 @@ namespace InsectAutoSystem2
             this.cbSensorPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSensorPort.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cbSensorPort.FormattingEnabled = true;
-            this.cbSensorPort.Location = new System.Drawing.Point(123, 57);
+            this.cbSensorPort.Location = new System.Drawing.Point(138, 57);
             this.cbSensorPort.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
             this.cbSensorPort.Name = "cbSensorPort";
-            this.cbSensorPort.Size = new System.Drawing.Size(200, 36);
+            this.cbSensorPort.Size = new System.Drawing.Size(174, 36);
             this.cbSensorPort.TabIndex = 9;
             // 
             // cbControlPort
@@ -446,11 +445,46 @@ namespace InsectAutoSystem2
             this.cbControlPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbControlPort.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cbControlPort.FormattingEnabled = true;
-            this.cbControlPort.Location = new System.Drawing.Point(123, 107);
+            this.cbControlPort.Location = new System.Drawing.Point(138, 107);
             this.cbControlPort.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
             this.cbControlPort.Name = "cbControlPort";
-            this.cbControlPort.Size = new System.Drawing.Size(200, 36);
+            this.cbControlPort.Size = new System.Drawing.Size(174, 36);
             this.cbControlPort.TabIndex = 10;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label14.Location = new System.Drawing.Point(3, 158);
+            this.label14.Margin = new System.Windows.Forms.Padding(3, 8, 3, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(114, 28);
+            this.label14.TabIndex = 11;
+            this.label14.Text = "4. 리더연결";
+            // 
+            // cbCardreaderPort
+            // 
+            this.cbCardreaderPort.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbCardreaderPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCardreaderPort.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.cbCardreaderPort.FormattingEnabled = true;
+            this.cbCardreaderPort.Location = new System.Drawing.Point(138, 157);
+            this.cbCardreaderPort.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
+            this.cbCardreaderPort.Name = "cbCardreaderPort";
+            this.cbCardreaderPort.Size = new System.Drawing.Size(174, 36);
+            this.cbCardreaderPort.TabIndex = 12;
+            // 
+            // btnConnectCardreader
+            // 
+            this.btnConnectCardreader.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnConnectCardreader.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnConnectCardreader.Location = new System.Drawing.Point(318, 153);
+            this.btnConnectCardreader.Name = "btnConnectCardreader";
+            this.btnConnectCardreader.Size = new System.Drawing.Size(131, 44);
+            this.btnConnectCardreader.TabIndex = 13;
+            this.btnConnectCardreader.Text = "연결";
+            this.btnConnectCardreader.UseVisualStyleBackColor = true;
+            this.btnConnectCardreader.Click += new System.EventHandler(this.btnConnectCardreader_Click);
             // 
             // tbLog
             // 
@@ -460,7 +494,7 @@ namespace InsectAutoSystem2
             this.tbLog.Multiline = true;
             this.tbLog.Name = "tbLog";
             this.tbLog.ReadOnly = true;
-            this.tbLog.Size = new System.Drawing.Size(464, 279);
+            this.tbLog.Size = new System.Drawing.Size(464, 282);
             this.tbLog.TabIndex = 4;
             // 
             // tableLayoutPanel5
@@ -555,7 +589,7 @@ namespace InsectAutoSystem2
             this.tbBoxCode.Location = new System.Drawing.Point(101, 3);
             this.tbBoxCode.Name = "tbBoxCode";
             this.tbBoxCode.ReadOnly = true;
-            this.tbBoxCode.Size = new System.Drawing.Size(357, 43);
+            this.tbBoxCode.Size = new System.Drawing.Size(387, 43);
             this.tbBoxCode.TabIndex = 1;
             // 
             // label13
@@ -577,43 +611,8 @@ namespace InsectAutoSystem2
             this.tbWeight.Location = new System.Drawing.Point(101, 53);
             this.tbWeight.Name = "tbWeight";
             this.tbWeight.ReadOnly = true;
-            this.tbWeight.Size = new System.Drawing.Size(357, 43);
+            this.tbWeight.Size = new System.Drawing.Size(387, 43);
             this.tbWeight.TabIndex = 3;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label14.Location = new System.Drawing.Point(3, 158);
-            this.label14.Margin = new System.Windows.Forms.Padding(3, 8, 3, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(114, 28);
-            this.label14.TabIndex = 11;
-            this.label14.Text = "4. 리더연결";
-            // 
-            // cbCardreaderPort
-            // 
-            this.cbCardreaderPort.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbCardreaderPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCardreaderPort.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.cbCardreaderPort.FormattingEnabled = true;
-            this.cbCardreaderPort.Location = new System.Drawing.Point(123, 157);
-            this.cbCardreaderPort.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
-            this.cbCardreaderPort.Name = "cbCardreaderPort";
-            this.cbCardreaderPort.Size = new System.Drawing.Size(200, 36);
-            this.cbCardreaderPort.TabIndex = 12;
-            // 
-            // btnConnectCardreader
-            // 
-            this.btnConnectCardreader.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnConnectCardreader.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnConnectCardreader.Location = new System.Drawing.Point(329, 153);
-            this.btnConnectCardreader.Name = "btnConnectCardreader";
-            this.btnConnectCardreader.Size = new System.Drawing.Size(132, 46);
-            this.btnConnectCardreader.TabIndex = 13;
-            this.btnConnectCardreader.Text = "연결";
-            this.btnConnectCardreader.UseVisualStyleBackColor = true;
-            this.btnConnectCardreader.Click += new System.EventHandler(this.btnConnectCardreader_Click);
             // 
             // Form1
             // 
