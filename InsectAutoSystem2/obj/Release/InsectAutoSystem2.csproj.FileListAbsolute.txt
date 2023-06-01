@@ -8,6 +8,7 @@ D:\devwork\InsectAutoSystem2\InsectAutoSystem2\bin\Release\AForge.Math.dll
 D:\devwork\InsectAutoSystem2\InsectAutoSystem2\bin\Release\AForge.Video.DirectShow.dll
 D:\devwork\InsectAutoSystem2\InsectAutoSystem2\bin\Release\AForge.Video.dll
 D:\devwork\InsectAutoSystem2\InsectAutoSystem2\bin\Release\EasyModbus.dll
+D:\devwork\InsectAutoSystem2\InsectAutoSystem2\bin\Release\Newtonsoft.Json.dll
 D:\devwork\InsectAutoSystem2\InsectAutoSystem2\bin\Release\AForge.xml
 D:\devwork\InsectAutoSystem2\InsectAutoSystem2\bin\Release\AForge.Controls.xml
 D:\devwork\InsectAutoSystem2\InsectAutoSystem2\bin\Release\AForge.Imaging.xml
@@ -15,6 +16,7 @@ D:\devwork\InsectAutoSystem2\InsectAutoSystem2\bin\Release\AForge.Math.xml
 D:\devwork\InsectAutoSystem2\InsectAutoSystem2\bin\Release\AForge.Video.xml
 D:\devwork\InsectAutoSystem2\InsectAutoSystem2\bin\Release\AForge.Video.DirectShow.xml
 D:\devwork\InsectAutoSystem2\InsectAutoSystem2\bin\Release\EasyModbus.xml
+D:\devwork\InsectAutoSystem2\InsectAutoSystem2\bin\Release\Newtonsoft.Json.xml
 D:\devwork\InsectAutoSystem2\InsectAutoSystem2\obj\Release\InsectAutoSystem2.Form1.resources
 D:\devwork\InsectAutoSystem2\InsectAutoSystem2\obj\Release\InsectAutoSystem2.Properties.Resources.resources
 D:\devwork\InsectAutoSystem2\InsectAutoSystem2\obj\Release\InsectAutoSystem2.csproj.GenerateResource.cache
@@ -22,3 +24,4 @@ D:\devwork\InsectAutoSystem2\InsectAutoSystem2\obj\Release\InsectAutoSystem2.csp
 D:\devwork\InsectAutoSystem2\InsectAutoSystem2\obj\Release\InsectAutoSystem2.csproj.CopyComplete
 D:\devwork\InsectAutoSystem2\InsectAutoSystem2\obj\Release\InsectAutoSystem2.exe
 D:\devwork\InsectAutoSystem2\InsectAutoSystem2\obj\Release\InsectAutoSystem2.pdb
+D:\devwork\InsectAutoSystem2\InsectAutoSystem2\obj\Release\InsectAutoSystem2.csproj.AssemblyReference.cache

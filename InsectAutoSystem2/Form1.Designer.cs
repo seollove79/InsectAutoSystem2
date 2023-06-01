@@ -494,6 +494,7 @@ namespace InsectAutoSystem2
             this.tbLog.Multiline = true;
             this.tbLog.Name = "tbLog";
             this.tbLog.ReadOnly = true;
+            this.tbLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tbLog.Size = new System.Drawing.Size(464, 282);
             this.tbLog.TabIndex = 4;
             // 
@@ -581,6 +582,7 @@ namespace InsectAutoSystem2
             this.label12.TabIndex = 0;
             this.label12.Text = "상자번호";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // tbBoxCode
             // 

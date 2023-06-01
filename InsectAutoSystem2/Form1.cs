@@ -42,9 +42,12 @@ namespace InsectAutoSystem2
         private float weight;
         private bool motorRun = false;
 
+
         const int MEASURE_TIME = 5; //측정시간
         const int DOWN_TIME = 30; //측정시간
         const int UP_TIME = 30; //측정시간
+
+        private Diary diary;
 
         public Form1()
         {
@@ -60,6 +63,8 @@ namespace InsectAutoSystem2
             measureWorker.DoWork += new DoWorkEventHandler(measure);
             //measureWorker.ProgressChanged += new ProgressChangedEventHandler(worker_ProgressChanged);
             measureWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(measure_complete);
+
+            diary = new Diary();
         }
 
         private void init()
@@ -211,10 +216,7 @@ namespace InsectAutoSystem2
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            camera.clear();
-            pictureBox1.Image = null;
-            pictureBox1.Invalidate();
-            Application.Exit();
+            
         }
 
         private void showMessage(string str)
@@ -375,6 +377,10 @@ namespace InsectAutoSystem2
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
+            camera.clear();
+            pictureBox1.Image = null;
+            pictureBox1.Invalidate();
+
             if (controller != null)
             {
                 controller.close();
@@ -461,6 +467,11 @@ namespace InsectAutoSystem2
                 getDeviceInfoThread.Abort();
             }
             Application.Exit();
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+            diary.post();
         }
     }
 }
